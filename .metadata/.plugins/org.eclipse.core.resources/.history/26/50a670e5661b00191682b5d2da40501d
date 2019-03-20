@@ -1,0 +1,75 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Quiz {
+	static ArrayList<Question> quiz = new ArrayList<Question>(25);
+	private int questions;
+	static int score;
+
+	/**
+	 * gets the number of questions
+	 * @return	the number of questions
+	 */
+	public int getQuestions() {
+		return questions;
+	}
+
+	/**
+	 * sets the number of questions
+	 * @param questions 	the number of questions to be set
+	 */
+	public void setQuestions(int questions) {
+		this.questions = questions;
+	}
+
+	/**
+	 * gets the current score
+	 * @return	the score
+	 */
+	public int getScore() {
+		return score;
+	}
+
+	/**
+	 * adds a question to the quiz array list
+	 * @param q	the question to be added
+	 */
+	public void add(Question q) {
+		quiz.add(q);
+	}
+
+	/**
+	 * prints out the quiz questions, accepts user input, and checks if the answer is correct
+	 * if the answer is correct, adds to the current score
+	 */
+	public void giveQuiz() {
+		Scanner sc = new Scanner(System.in);
+		for (Question q : quiz) {
+			System.out.print(q.getQuestion());
+			System.out.println(" (Difficulty: " + q.getDifficulty() + ")");
+			String response = sc.nextLine();
+			if(q.getAnswer().equalsIgnoreCase(response)) {
+				System.out.println("Correct!");
+				score++;
+			}else {
+				System.out.println("Incorrect.");
+			}
+		}
+		sc.close();
+		System.out.println("Total Score: " + score);
+	}
+	
+	/**
+	 * Accepts two difficulty levels (a minimum and maximum)
+	 * and presents questions within that difficulty range
+	 * @param minDiff	the minimum difficulty level
+	 * @param maxDiff	the maximum difficulty level
+	 */
+	public void giveQuiz(int minDiff, int maxDiff) {
+		for(Question q: quiz) {
+			if(q.getDifficulty() < minDiff || q.getDifficulty() > maxDiff) {
+				quiz.remove(quiz.indexOf(q));
+			}
+		}
+	}
+}

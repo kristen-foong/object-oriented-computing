@@ -1,0 +1,12 @@
+
+public class QuizTime {
+
+	public static void main(String[] args) {
+		Question q1 = new Question("Who composed Eine Kleine Nacht Musik?", "Mozart", 3);
+		Question q2 = new Question("Who composed the Firebird Suite?", "Stravinsky", 5);
+		Question q3 = new Question("Who composed Danse Macabre?", "Saint-Saens", 9);
+		Question q4 = new Question("Who composed Clair de Lune?", "Debussy", 7);
+		Question q5 = new Question("Who composed Moonlight Sonata?", "Beethoven");
+	}
+
+}

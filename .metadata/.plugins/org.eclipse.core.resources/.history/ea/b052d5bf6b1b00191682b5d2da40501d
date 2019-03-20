@@ -1,0 +1,79 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Quiz {
+	private ArrayList<Question> quiz;
+	static int score = 0;
+	static int numQuiz = 0;
+	
+	/**
+	 * Constructor for the Quiz class
+	 */
+	public Quiz(int questions) {
+		quiz = new ArrayList<Question>(questions);
+		numQuiz++;
+	}
+	
+	/**
+	 * default constructor for the Quiz class
+	 */
+	public Quiz() {
+		quiz = new ArrayList<Question>(25);
+		numQuiz++;
+	}
+
+	public ArrayList<Question> getQuiz() {
+		return quiz;
+	}
+
+	/**
+	 * adds a question to the quiz array list
+	 * @param q	the question to be added
+	 */
+	public void add(Question q) {
+		quiz.add(q);
+	}
+
+	/**
+	 * prints out the quiz questions, accepts user input
+	 * and checks if the answer is correct
+	 * if the answer is correct, adds to the current score and prints "correct"
+	 * else, prints "incorrect"
+	 */
+	public void giveQuiz() {
+		if(numQuiz > 1) {
+			System.out.println("You have " + numQuiz + " quizzes to do.");
+		}else {
+			System.out.println("You have " + numQuiz + " quiz to do.");
+		}
+		Scanner sc = new Scanner(System.in);
+		for (Question q : this.getQuiz()) {
+			System.out.print(q.getQuestion());
+			System.out.println(" (Difficulty: " + q.getDifficulty() + ")");
+			String response = sc.nextLine();
+			if(q.getAnswer().equalsIgnoreCase(response)) {
+				System.out.println("Correct!");
+				score++;
+			}else {
+				System.out.println("Incorrect.");
+			}
+		}
+		System.out.println("Total Score: " + score);
+	}
+	
+	/**
+	 * Overloaded constructor that accepts two difficulty levels
+	 * and presents questions within that difficulty range
+	 * @param minDiff	the minimum difficulty level
+	 * @param maxDiff	the maximum difficulty level
+	 */
+	public void giveQuiz(int minDiff, int maxDiff) {
+		for(int i = 0; i < quiz.size(); i++) {
+			if(this.getQuiz().get(i).getDifficulty() < minDiff || this.getQuiz().get(i).getDifficulty() > maxDiff) {
+				this.getQuiz().remove(i);
+				i--;
+			}
+		}
+		giveQuiz();
+	}
+}

@@ -1,0 +1,9 @@
+
+public class QuizTime {
+
+	public static void main(String[] args) {
+		Question q1 = new Question("Who composed Eine Kleine Nacht Musik?", "Mozart", 1);
+		Question q2 = new Question("")
+	}
+
+}

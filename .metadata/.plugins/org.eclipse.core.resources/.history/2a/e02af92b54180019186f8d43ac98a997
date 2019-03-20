@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+
+public class ShoppingCart {
+	private int size;
+	private double totalPrice;
+	private boolean isEmpty = false;
+	private ArrayList<Item> groceries = new ArrayList<Item>();
+	
+	public int getSize() {
+		for(Item curr: groceries) {
+			this.size += curr.getQuantity();
+		}
+		return this.size;
+	}
+	
+	public double getTotalPrice() {
+		for(Item curr: groceries) {
+			this.totalPrice += curr.getPrice();
+		}
+		return totalPrice;
+	}
+	
+	public void addItem(Item a) {
+		groceries.add(a);
+	}
+	
+	public void removeItem(Item a) {
+		groceries.remove(a);
+	}
+	
+	public boolean issEmpty() {
+		if(this.getSize() == 0) {
+			this.isEmpty = true;
+		}
+		return this.isEmpty;
+	}
+	
+}

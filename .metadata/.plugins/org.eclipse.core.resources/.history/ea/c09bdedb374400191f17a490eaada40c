@@ -1,0 +1,24 @@
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Pacman extends JPanel{
+	
+	public Pacman() {
+
+		ImageIcon inky = new ImageIcon("inky.png");
+		ImageIcon pinky = new ImageIcon("pinky.png");
+		ImageIcon blinky = new ImageIcon("blinky.png");
+		ImageIcon clyde = new ImageIcon("clyde.png");
+		ImageIcon blue = new ImageIcon("blue.png");
+		ImageIcon pacman = new ImageIcon("pacman.png");
+		ImageIcon pellet = new ImageIcon("pellet.png");
+		
+	}
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+		
+	}
+}	

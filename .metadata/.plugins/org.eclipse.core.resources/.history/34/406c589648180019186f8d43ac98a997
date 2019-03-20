@@ -1,0 +1,6 @@
+
+public class ShoppingCart {
+	private int size;
+	private double totalPrice;
+	private Items groceries;
+}

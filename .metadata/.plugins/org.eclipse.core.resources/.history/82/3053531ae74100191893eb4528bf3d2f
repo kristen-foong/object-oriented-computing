@@ -1,0 +1,12 @@
+import java.util.ArrayList;
+
+public class AccountStreams {
+
+	public static void main(String[] args) {
+		ArrayList<Account> accArr = AccountParser.getCollection("accountsSmall.txt");
+		for(Account a: accArr) {
+			System.out.println("[Acc: " + a.getNumber() + ", " + "Balance: " + a.getBalance() + "]");
+		}
+	}
+
+}

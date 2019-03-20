@@ -1,0 +1,6 @@
+import java.util.arrayList;
+
+public class Quiz {
+	ArrayList<Question> quiz = new ArrayList<Question>(25);
+	private int questions;
+}

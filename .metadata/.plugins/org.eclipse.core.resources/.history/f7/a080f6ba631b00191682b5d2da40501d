@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Quiz {
+	ArrayList<Question> quiz = new ArrayList<Question>(25);
+	private int questions;
+	static int score;
+
+	public ArrayList<Question> getQuiz() {
+		return quiz;
+	}
+
+	public void setQuiz(ArrayList<Question> quiz) {
+		this.quiz = quiz;
+	}
+
+	public int getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(int questions) {
+		this.questions = questions;
+	}
+
+	public static int getScore() {
+		return score;
+	}
+
+	public void add(Question q) {
+		quiz.add(q);
+	}
+
+	public void giveQuiz() {
+		for (Question q : quiz) {
+			System.out.println(q.getQuestion());
+			Scanner sc = new Scanner(System.in);
+			String response = sc.nextLine();
+			sc.close();
+			if(q.getAnswer().equalsIgnoreCase(response)) {
+				score++;
+			}
+		}
+	}
+}

@@ -1,0 +1,40 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class StringTooLong {
+
+	public static void main(String[] args) {
+		File inputFile = new File("sunshine.txt");
+		System.out.println(inputFile.canWrite());
+		
+		Scanner fileScanner = null;
+		try {
+			fileScanner = new Scanner(inputFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		String makeShorter = "";
+		while(fileScanner.hasNext()) {
+			String original = "\n" + fileScanner.nextLine();
+			for(int i = 0; i < 20; i++) {
+				makeShorter += original.charAt(i);
+			}
+		}
+		fileScanner.close();
+
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter("newSunshine.txt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			writer.close();
+		}
+
+		writer.write(reverse);
+	}
+
+}

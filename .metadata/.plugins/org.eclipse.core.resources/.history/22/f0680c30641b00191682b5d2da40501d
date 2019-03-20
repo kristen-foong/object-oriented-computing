@@ -1,0 +1,72 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Quiz {
+	ArrayList<Question> quiz = new ArrayList<Question>(25);
+	private int questions;
+	static int score;
+
+	/**
+	 * Gets the list of questions
+	 * @return	the list of questions
+	 */
+	public ArrayList<Question> getQuiz() {
+		return quiz;
+	}
+
+	/**
+	 * Sets the quiz
+	 * @param quiz 	the quiz to be set
+	 */
+	public void setQuiz(ArrayList<Question> quiz) {
+		this.quiz = quiz;
+	}
+
+	/**
+	 * gets the number of questions
+	 * @return	the number of questions
+	 */
+	public int getQuestions() {
+		return questions;
+	}
+
+	/**
+	 * sets the number of questions
+	 * @param questions 	the number of questions to be set
+	 */
+	public void setQuestions(int questions) {
+		this.questions = questions;
+	}
+
+	/**
+	 * gets the current score
+	 * @return	the score
+	 */
+	public static int getScore() {
+		return score;
+	}
+
+	/**
+	 * adds a question to the quiz array list
+	 * @param q	the question to be added
+	 */
+	public void add(Question q) {
+		quiz.add(q);
+	}
+
+	/**
+	 * prints out the quiz questions, accepts user input, and checks if the answer is correct
+	 * if the answer is correct, adds to the current score
+	 */
+	public void giveQuiz() {
+		for (Question q : quiz) {
+			System.out.println(q.getQuestion());
+			Scanner sc = new Scanner(System.in);
+			String response = sc.nextLine();
+			sc.close();
+			if(q.getAnswer().equalsIgnoreCase(response)) {
+				score++;
+			}
+		}
+	}
+}

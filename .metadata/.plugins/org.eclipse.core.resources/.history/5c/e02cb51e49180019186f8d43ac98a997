@@ -1,0 +1,27 @@
+import java.util.ArrayList;
+
+public class ShoppingCart {
+	private int size;
+	private double totalPrice;
+	private ArrayList<Items> groceries = new ArrayList<Items>();
+	
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public Items getGroceries() {
+		return groceries;
+	}
+	public void setGroceries(Items groceries) {
+		this.groceries = groceries;
+	}
+	
+}

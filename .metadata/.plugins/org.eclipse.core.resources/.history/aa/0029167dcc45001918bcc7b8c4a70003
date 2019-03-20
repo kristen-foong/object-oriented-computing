@@ -1,0 +1,19 @@
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Stopwatch extends JPanel{
+	private Timer timeIt;
+	private JButton start, stop, reset;
+	private static int seconds = 0;
+	public Stopwatch() {
+		timeIt = new Timer(1000, new TimerListener());
+	}
+	
+	private class TimerListener implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			seconds++;
+		}
+	}
+	
+}

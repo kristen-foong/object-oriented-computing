@@ -1,0 +1,9 @@
+
+public class InvalidBalanceException extends IllegalArgumentException{
+	public InvalidBalanceException() {
+		super("Invalid Balance.");
+	}
+	public InvalidBalanceException(String message) {
+		super(message);
+	}
+}

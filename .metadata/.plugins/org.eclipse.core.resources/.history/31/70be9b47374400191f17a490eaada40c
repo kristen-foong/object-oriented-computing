@@ -1,0 +1,18 @@
+
+import java.awt.*;
+import java.awt.geom.Ellipse2D;
+
+import javax.swing.*;
+
+public class Pacman extends JPanel{
+	
+	public Pacman() {
+		
+	}
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+		
+	}
+}	

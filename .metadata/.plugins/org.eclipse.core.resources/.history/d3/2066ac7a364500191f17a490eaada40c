@@ -1,0 +1,102 @@
+
+import java.awt.*;
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Random;
+import java.awt.event.*;
+
+public class Pacman extends JPanel{
+	private ImageIcon pellet, currGhost, pacman;
+	private Point pelletLocation, ghostLocation, pacmanLocation;
+	private Timer timeIt;
+	private int xDirection = 5;
+	private int yDirection = 5;
+	private ArrayList<ImageIcon> ghostArr;
+	
+	public Pacman() {
+
+		ImageIcon inky = new ImageIcon("inky.png");
+		ImageIcon pinky = new ImageIcon("pinky.png");
+		ImageIcon blinky = new ImageIcon("blinky.png");
+		ImageIcon clyde = new ImageIcon("clyde.png");
+		ImageIcon blue = new ImageIcon("blue.png");
+		pacman = new ImageIcon("pacman.png");
+		pellet = new ImageIcon("pellet.png");
+		
+		ghostArr = new ArrayList<ImageIcon>();
+		ghostArr.add(inky);
+		ghostArr.add(pinky);
+		ghostArr.add(blinky);
+		ghostArr.add(clyde);
+		
+		Random gen = new Random();
+		pelletLocation = new Point(gen.nextInt(400), gen.nextInt(400));
+		ghostLocation = new Point(gen.nextInt(400), gen.nextInt(400));
+		pacmanLocation = new Point(0,0);
+		
+		currGhost = inky;
+		timeIt = new Timer(50, new TimerListener());
+		timeIt.start();
+		
+		addKeyListener(new GhostListener());
+		addMouseMotionListener(new PacmanListener());
+		setFocusable(true);
+		
+		setBackground(Color.BLACK);
+		setPreferredSize(new Dimension(500,500));
+		
+	}
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+		currGhost.paintIcon(this, g2, (int)ghostLocation.getX(), (int)ghostLocation.getY());
+		pellet.paintIcon(this, g2, (int)pelletLocation.getX(), (int)pelletLocation.getY());
+		pacman.paintIcon(this, g2, (int)pacmanLocation.getX(), (int)pacmanLocation.getY());
+	}
+	
+	private class TimerListener implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			if (ghostLocation.getX() >= 400 || ghostLocation.getX() <= 0) {
+				xDirection *= -1;
+			}
+			if (ghostLocation.getY() >= 400 || ghostLocation.getY() <= 0) {
+				yDirection *= -1;
+			}
+			ghostLocation.setLocation((ghostLocation.getX() + xDirection), (ghostLocation.getY() + yDirection));
+			repaint();
+		}
+	}
+	
+	private class GhostListener extends KeyAdapter {
+		public void keyPressed(KeyEvent event) {
+			switch(event.getKeyCode()) {
+			case KeyEvent.VK_P:
+				currGhost = ghostArr.get(1);
+				break;
+			case KeyEvent.VK_B:
+				currGhost = ghostArr.get(2);
+				break;
+			case KeyEvent.VK_I:
+				currGhost = ghostArr.get(0);
+				break;
+			case KeyEvent.VK_C:
+				currGhost = ghostArr.get(3);
+				break;
+			}
+			repaint();
+		}
+	}
+	
+	private class PacmanListener implements MouseMotionListener {
+		public void mouseDragged(MouseEvent event) {
+			pacmanLocation = event.getPoint();
+			repaint();
+		}
+
+		@Override
+		public void mouseMoved(MouseEvent arg0) {
+			
+		}
+	}
+}	

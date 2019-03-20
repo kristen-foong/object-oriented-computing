@@ -1,0 +1,52 @@
+
+import java.awt.*;
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Random;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
+
+public class Pacman extends JPanel{
+	private Point pelletLocation;
+	private ImageIcon currGhost;
+	
+	public Pacman() {
+
+		ImageIcon inky = new ImageIcon("inky.png");
+		ImageIcon pinky = new ImageIcon("pinky.png");
+		ImageIcon blinky = new ImageIcon("blinky.png");
+		ImageIcon clyde = new ImageIcon("clyde.png");
+		ImageIcon blue = new ImageIcon("blue.png");
+		ImageIcon pacman = new ImageIcon("pacman.png");
+		ImageIcon pellet = new ImageIcon("pellet.png");
+		
+		currGhost = blinky;
+		
+		Random gen = new Random();
+		pelletLocation = new Point(gen.nextInt(500), gen.nextInt(500));
+		
+		setBackground(Color.BLACK);
+		setPreferredSize(new Dimension(500,500));
+		
+	}
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+		currGhost.paintIcon(this, g2, 0, 0);
+		
+	}
+	
+	private class TimerListener implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			
+		}
+	}
+	
+	private class GhostListener extends KeyAdapter {
+		public void keyPressed(KeyEvent event) {
+			
+		}
+	}
+}	
