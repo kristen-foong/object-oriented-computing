@@ -1,8 +1,0 @@
-
-public class AccountStreams {
-
-	public static void main(String[] args) {
-		ArrayList<Account> accArr = getCollection("accountsSmall.txt");
-	}
-
-}

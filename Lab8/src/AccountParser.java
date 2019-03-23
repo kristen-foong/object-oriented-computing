@@ -34,7 +34,7 @@ public class AccountParser {
 			try {
 				accountArr.add(createAccount(curr));
 			} catch (InvalidBalanceException e) {
-				e.printStackTrace();
+				System.out.println(e.getMessage());
 			}
 		}
 		
@@ -49,7 +49,7 @@ public class AccountParser {
 		
 		//check if balance is negative
 		if(balance < 0) {
-			throw new InvalidBalanceException("Your balance is negative.");
+			throw new InvalidBalanceException("Invalid Balance: Account " + number + " has a balance of " + balance + ".");
 		} else {
 			return new Account(number, balance);
 		}

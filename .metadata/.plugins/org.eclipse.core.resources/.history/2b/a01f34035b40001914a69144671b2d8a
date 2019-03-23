@@ -1,9 +1,0 @@
-
-public class StringTooLongException extends IllegalArgumentException{
-	public StringTooLongException() {
-		
-	}
-	public StringTooLongException(String message) {
-		super(message);
-	}
-}
